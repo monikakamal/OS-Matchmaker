@@ -1,0 +1,76 @@
+/* =========================================
+   static/style.css
+   ========================================= */
+
+/* Deep Dark Gradient Background */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #020617 100%);
+    color: #ffffff;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+}
+
+/* Premium Frosted Glass Effect (Glassmorphism) */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem; /* 16px */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Text Gradient for Logo/Headings */
+.text-gradient {
+    background: linear-gradient(to right, #22d3ee, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Roadmap Cards - Smooth Hover & Neon Glow */
+.roadmap-card {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Specific Glow Colors for 4 Steps */
+.glow-cyan:hover {
+    border-color: #22d3ee;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+}
+
+.glow-emerald:hover {
+    border-color: #34d399;
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.2);
+}
+
+.glow-amber:hover {
+    border-color: #fbbf24;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.glow-rose:hover {
+    border-color: #fb7185;
+    box-shadow: 0 0 20px rgba(251, 113, 133, 0.2);
+}
+
+/* Custom Scrollbar for a sleek look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
