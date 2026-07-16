@@ -14,25 +14,25 @@
         <h3 class="text-lg font-semibold text-slate-300 mb-4 tracking-wide">4-Step Interactive Roadmap (The Core)</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             
-            <div class="roadmap-card glass-panel glow-cyan p-5 flex flex-col items-start border-white/10">
+            <div onclick="handleButtonClick('setup')" class="roadmap-card glass-panel glow-cyan p-5 flex flex-col items-start border-white/10 cursor-pointer">
                 <span class="text-cyan-400 text-2xl mb-2">🛠️</span>
                 <h4 class="font-bold text-white mb-1 text-sm">1. Lite Setup</h4>
                 <p class="text-xs text-slate-400">Setup local environment easily.</p>
             </div>
-            
-            <div class="roadmap-card glass-panel glow-emerald p-5 flex flex-col items-start border-white/10">
+
+            <div onclick="handleButtonClick('bugs')" class="roadmap-card glass-panel glow-emerald p-5 flex flex-col items-start border-white/10 cursor-pointer">
                 <span class="text-emerald-400 text-2xl mb-2">🔍</span>
                 <h4 class="font-bold text-white mb-1 text-sm">2. Search Bugs</h4>
                 <p class="text-xs text-slate-400">Find beginner-friendly tasks.</p>
             </div>
-            
-            <div class="roadmap-card glass-panel glow-amber p-5 flex flex-col items-start border-white/10">
+
+            <div onclick="handleButtonClick('fix')" class="roadmap-card glass-panel glow-amber p-5 flex flex-col items-start border-white/10 cursor-pointer">
                 <span class="text-amber-400 text-2xl mb-2">✍️</span>
                 <h4 class="font-bold text-white mb-1 text-sm">3. Code Fix</h4>
                 <p class="text-xs text-slate-400">Apply small changes to code.</p>
             </div>
-            
-            <div class="roadmap-card glass-panel glow-rose p-5 flex flex-col items-start border-white/10">
+
+            <div onclick="handleButtonClick('submit')" class="roadmap-card glass-panel glow-rose p-5 flex flex-col items-start border-white/10 cursor-pointer">
                 <span class="text-rose-400 text-2xl mb-2">🚀</span>
                 <h4 class="font-bold text-white mb-1 text-sm">4. Submit & Level Up</h4>
                 <p class="text-xs text-slate-400">Push contribution & earn rewards.</p>
@@ -57,7 +57,7 @@
                     </div>
                     <a href="{{ issues[0].html_url }}" target="_blank" 
                        class="w-full text-center bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-900 transition py-2 rounded text-xs font-bold uppercase tracking-wider">
-                        FIX THIS BUG
+                       FIX THIS BUG
                     </a>
                 </div>
                 {% else %}
@@ -76,7 +76,7 @@
                     </div>
                     <a href="{{ issues[1].html_url }}" target="_blank" 
                        class="w-full text-center bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-900 transition py-2 rounded text-xs font-bold uppercase tracking-wider">
-                        CONTRIBUTE NOW
+                       CONTRIBUTE NOW
                     </a>
                 </div>
                 {% endif %}
