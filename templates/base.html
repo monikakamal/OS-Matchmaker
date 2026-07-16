@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matchmaker OS - Open Source Hub</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom CSS Link -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body class="p-4 md:p-8 flex justify-center bg-slate-900 text-white">
 
-    <!-- Main Dashboard Container -->
     <div class="w-full max-w-6xl glass-panel p-6 md:p-10">
         
-        <!-- Header & Navbar -->
         <header class="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-6 mb-8">
             <div class="flex items-center gap-8">
                 <h1 class="text-3xl font-extrabold tracking-wider text-gradient">
@@ -26,7 +23,6 @@
                     <a href="/explore" class="pb-1 transition {% if request.endpoint == 'explore' %} text-cyan-400 border-b-2 border-cyan-400 {% else %} text-slate-300 hover:text-cyan-400 {% endif %}">EXPLORE</a>
                     <a href="/leaderboard" class="pb-1 transition {% if request.endpoint == 'leaderboard' %} text-cyan-400 border-b-2 border-cyan-400 {% else %} text-slate-300 hover:text-cyan-400 {% endif %}">LEADERBOARD</a>
                     
-                    <!-- Dynamic Auth Links -->
                     {% if current_user.is_authenticated %}
                         <a href="/logout" class="text-red-400 hover:text-red-300">LOGOUT</a>
                     {% else %}
@@ -36,16 +32,13 @@
                 </nav>
             </div>
             
-            <!-- Profile Widget -->
             <div class="mt-4 md:mt-0 flex items-center gap-4 glass-panel p-3 px-5 border-white/20">
                 {% if current_user.is_authenticated %}
                     <div class="text-right">
                         <p class="font-bold text-sm text-white">{{ current_user.username }}</p>
                         <p class="text-xs text-slate-400">Level {{ current_user.level }}</p>
                     </div>
-                    <div class="h-12 w-12 rounded-full bg-cyan-900/50 flex items-center justify-center border border-cyan-500 text-xl">
-                        👤
-                    </div>
+                    <div class="h-12 w-12 rounded-full bg-cyan-900/50 flex items-center justify-center border border-cyan-500 text-xl">👤</div>
                 {% else %}
                     <div class="text-right">
                         <p class="font-bold text-sm text-white">Guest</p>
@@ -55,9 +48,10 @@
             </div>
         </header>
 
-        <!-- Page Content -->
         {% block content %}{% endblock %}
 
     </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

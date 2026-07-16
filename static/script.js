@@ -1,3 +1,4 @@
+console.log("Script file successfully loaded!");
 function handleButtonClick(action) {
     switch(action) {
         case 'setup':
