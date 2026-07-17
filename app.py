@@ -19,8 +19,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
     xp = db.Column(db.Integer, default=3800)       # Default starting XP
-    level = db.Column(db.Integer, default=15)       # Default starting Level
-    points = db.Column(db.Integer, default=120)     # Added to match leaderboard/index
+    level = db.Column(db.Integer, default=15)      # Default starting Level
+    points = db.Column(db.Integer, default=120)    # Added to match leaderboard/index
     avatar = db.Column(db.String(10), default='👤')  # Added for template rendering
     title = db.Column(db.String(50), default='Open Source Novice') # Custom title for rank row
 
@@ -96,6 +96,12 @@ def reset_password():
             flash("User nahi mila!")
     return render_template('reset_password.html')
 
+# --- NAYE STEP ROUTES YAHAN HAIN ---
+
+@app.route('/setup')
+def setup():
+    return render_template('setup.html', user=current_user)
+
 @app.route('/explore')
 def explore():
     lang = request.args.get('lang', 'python')
@@ -112,6 +118,17 @@ def explore():
         print(f"ERROR: {e}")
         
     return render_template('explore.html', user=current_user, issues=issues, current_lang=lang)
+
+@app.route('/fix')
+def fix():
+    return render_template('fix.html', user=current_user)
+
+@app.route('/submit')
+def submit():
+    # Step 4 ke liye route add kar diya hai taaki error na aaye
+    return render_template('submit.html', user=current_user)
+
+# --- END NAYE ROUTES ---
 
 @app.route('/leaderboard')
 def leaderboard():
@@ -136,7 +153,6 @@ def leaderboard():
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
 
 # Is block ko humne bahar nikal diya taaki Render par bhi database ban sake
 with app.app_context():
