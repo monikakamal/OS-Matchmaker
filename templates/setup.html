@@ -1,53 +1,90 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="max-w-4xl mx-auto mt-10">
+
+    <!-- Page Heading -->
     <div class="text-center mb-10">
-        <h2 class="text-4xl font-bold text-cyan-400 mb-4">Step 1: Lite Setup 🛠️</h2>
+        <h2 class="text-4xl font-bold text-cyan-400 mb-4">
+            Step 1: Lite Setup 🛠️
+        </h2>
+
         <p class="text-slate-300 text-lg">
-            Apne PC par project laane ke liye niche di gayi commands ko copy karein aur apne Terminal (CMD) mein run karein.
+            Copy the commands below and run them in your Terminal (CMD)
+            to set up the project on your computer.
         </p>
     </div>
 
-    <!-- Code Box Container -->
+    <!-- Command Box -->
     <div class="glass-panel p-6 md:p-8 rounded-xl border border-white/20 bg-slate-900/80 relative shadow-2xl">
-        
+
         <!-- Copy Button -->
-        <button onclick="copyToClipboard()" class="absolute top-4 right-4 bg-slate-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-md text-sm font-bold transition flex items-center gap-2">
+        <button
+            onclick="copyToClipboard()"
+            class="absolute top-4 right-4 bg-slate-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-md text-sm font-bold transition">
+
             📋 Copy
+
         </button>
-        
-        <!-- Bash Commands -->
+
+        <!-- Commands -->
+
         <pre class="overflow-x-auto pt-8"><code id="command-box" class="text-fuchsia-400 text-lg font-mono leading-relaxed">git clone https://github.com/MonikaKamal/OS-Matchmaker.git
 cd OS-Matchmaker
-code .</code></pre>
+pip install -r requirements.txt
+python app.py</code></pre>
+
     </div>
 
     <!-- Navigation Buttons -->
+
     <div class="mt-12 flex justify-between items-center border-t border-white/10 pt-6">
-        <a href="/" class="text-slate-400 hover:text-cyan-400 transition font-bold">&larr; Back to Home</a>
-        <a href="/explore" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-extrabold py-3 px-8 rounded-full transition shadow-[0_0_15px_rgba(34,211,238,0.4)]">
-            Step 2: Find Bugs &rarr;
+
+        <a href="{{ url_for('home') }}"
+           class="text-slate-400 hover:text-cyan-400 transition font-bold">
+
+            ← Back to Home
+
         </a>
+
+        <a href="{{ url_for('explore') }}"
+           class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-extrabold py-3 px-8 rounded-full transition">
+
+            Step 2: Find Bugs →
+
+        </a>
+
     </div>
+
 </div>
 
-<!-- Copy to Clipboard Script -->
 <script>
-    function copyToClipboard() {
-        var codeText = document.getElementById("command-box").innerText;
-        navigator.clipboard.writeText(codeText);
-        
-        // Button text change for feedback
-        const btn = document.querySelector('button');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '✅ Copied!';
-        btn.classList.add('bg-green-600');
-        
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.classList.remove('bg-green-600');
-        }, 2000);
-    }
+
+function copyToClipboard() {
+
+    const codeText = document.getElementById("command-box").innerText;
+
+    navigator.clipboard.writeText(codeText);
+
+    const btn = document.querySelector("button");
+
+    const original = btn.innerHTML;
+
+    btn.innerHTML = "✅ Copied!";
+
+    btn.classList.add("bg-green-600");
+
+    setTimeout(() => {
+
+        btn.innerHTML = original;
+
+        btn.classList.remove("bg-green-600");
+
+    }, 2000);
+
+}
+
 </script>
+
 {% endblock %}

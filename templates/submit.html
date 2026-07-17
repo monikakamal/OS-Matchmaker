@@ -1,45 +1,166 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto mt-10">
-    <div class="text-center mb-12">
+
+<div class="max-w-5xl mx-auto mt-10">
+
+    <!-- Heading -->
+
+    <div class="text-center mb-10">
+
         <h2 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500 mb-4">
-            Step 4: Celebration Time! 🚀
+            Step 4: Submit Pull Request 🚀
         </h2>
-        <p class="text-slate-300 text-xl">
-            Aapne coding kar li, ab waqt hai duniya ko apna contribution dikhane ka!
+
+        <p class="text-slate-300 text-lg">
+            Congratulations! Your code is ready. Now submit your Pull Request and become an Open Source Contributor.
         </p>
+
     </div>
 
-    <!-- Celebration/Reward Box -->
-    <div class="glass-panel p-8 rounded-2xl border border-fuchsia-500/30 bg-gradient-to-b from-slate-900 to-slate-800 text-center mb-8">
-        <div class="text-6xl mb-4">🎉</div>
-        <h3 class="text-2xl font-bold text-white mb-2">PR Ready!</h3>
-        <p class="text-slate-400">Sab badlav kar diye? Ab in steps ko follow karke apna kaam submit karein:</p>
+    <!-- Success Card -->
+
+    <div class="glass-panel p-8 rounded-xl text-center border border-fuchsia-500/30 mb-8">
+
+        <div class="text-6xl mb-4">
+            🎉
+        </div>
+
+        <h3 class="text-2xl font-bold text-white mb-3">
+            Pull Request Ready
+        </h3>
+
+        <p class="text-slate-400">
+            Follow the steps below to upload your contribution to GitHub.
+        </p>
+
     </div>
 
-    <!-- PR Guide Steps -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <div class="glass-panel p-6 border border-white/10 text-center">
-            <div class="text-3xl mb-2">1️⃣</div>
-            <p class="text-sm text-slate-300 font-medium">Git add, commit, aur push command run karein.</p>
+    <!-- Steps -->
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="glass-panel p-6 text-center">
+
+            <div class="text-4xl mb-3">
+                1️⃣
+            </div>
+
+            <h4 class="font-bold text-white mb-2">
+                Commit Changes
+            </h4>
+
+            <p class="text-sm text-slate-400">
+                Run git add, git commit and git push commands.
+            </p>
+
         </div>
-        <div class="glass-panel p-6 border border-white/10 text-center">
-            <div class="text-3xl mb-2">2️⃣</div>
-            <p class="text-sm text-slate-300 font-medium">GitHub par jao aur 'New Pull Request' click karein.</p>
+
+        <div class="glass-panel p-6 text-center">
+
+            <div class="text-4xl mb-3">
+                2️⃣
+            </div>
+
+            <h4 class="font-bold text-white mb-2">
+                Open GitHub
+            </h4>
+
+            <p class="text-sm text-slate-400">
+                Click on Compare & Pull Request.
+            </p>
+
         </div>
-        <div class="glass-panel p-6 border border-white/10 text-center">
-            <div class="text-3xl mb-2">3️⃣</div>
-            <p class="text-sm text-slate-300 font-medium">Description likhein aur PR submit kar dein!</p>
+
+        <div class="glass-panel p-6 text-center">
+
+            <div class="text-4xl mb-3">
+                3️⃣
+            </div>
+
+            <h4 class="font-bold text-white mb-2">
+                Submit PR
+            </h4>
+
+            <p class="text-sm text-slate-400">
+                Add a title, description and submit your Pull Request.
+            </p>
+
         </div>
+
     </div>
 
-    <!-- Final Call to Action -->
-    <div class="text-center">
-        <a href="https://github.com/MonikaKamal/OS-Matchmaker/pulls" target="_blank" 
-           class="bg-gradient-to-r from-fuchsia-600 to-cyan-600 hover:from-fuchsia-500 hover:to-cyan-500 text-white font-extrabold py-4 px-10 rounded-full transition shadow-[0_0_20px_rgba(192,38,211,0.5)]">
-            🚀 SUBMIT PULL REQUEST
+    <!-- Git Commands -->
+
+    <div class="glass-panel p-6 mt-10">
+
+        <h3 class="text-xl font-bold text-cyan-400 mb-4">
+            Git Commands
+        </h3>
+
+<pre class="overflow-x-auto text-sm"><code id="git-code">git add .
+git commit -m "Fixed beginner issue"
+git push origin main</code></pre>
+
+        <button
+            onclick="copyGitCode()"
+            class="mt-5 bg-cyan-600 hover:bg-cyan-500 px-5 py-2 rounded-lg font-bold">
+
+            📋 Copy Commands
+
+        </button>
+
+    </div>
+
+    <!-- Submit Button -->
+
+    <div class="text-center mt-10">
+
+        <a href="https://github.com/MonikaKamal/OS-Matchmaker/pulls"
+           target="_blank"
+           class="inline-block bg-gradient-to-r from-fuchsia-600 to-cyan-600 hover:from-fuchsia-500 hover:to-cyan-500 px-8 py-4 rounded-full font-bold text-white">
+
+            🚀 Open GitHub Pull Requests
+
         </a>
+
     </div>
+
+    <!-- Navigation -->
+
+    <div class="flex justify-between mt-10">
+
+        <a href="{{ url_for('fix') }}"
+           class="text-cyan-400 hover:text-cyan-300">
+
+            ← Back
+
+        </a>
+
+        <a href="{{ url_for('leaderboard') }}"
+           class="text-fuchsia-400 hover:text-fuchsia-300 font-bold">
+
+            View Leaderboard →
+
+        </a>
+
+    </div>
+
 </div>
+
+<script>
+
+function copyGitCode(){
+
+    const code =
+document.getElementById("git-code").innerText;
+
+    navigator.clipboard.writeText(code);
+
+    alert("Git commands copied successfully!");
+
+}
+
+</script>
+
 {% endblock %}

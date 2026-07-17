@@ -2,18 +2,19 @@ console.log("Script file successfully loaded!");
 function handleButtonClick(action) {
     switch(action) {
         case 'setup':
-            alert("Step 1: Lite Setup starting! Please check the documentation.");
+            // Yeh line alert ko hatakar naye page par le jayegi
+            window.location.href = "/setup"; 
             break;
         case 'bugs':
-            alert("Step 2: Searching for bugs! Opening the GitHub issues list...");
+            window.location.href = "/explore";
             break;
         case 'fix':
-            alert("Step 3: Code Fix! Start applying changes in your editor.");
+            window.location.href = "/fix";
             break;
         case 'submit':
-            alert("Step 4: Submit & Level Up! Generate a Pull Request.");
+            window.location.href = "/submit";
             break;
         default:
-            alert("Button clicked!");
+            console.log("Unknown action");
     }
 }

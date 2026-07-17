@@ -22,6 +22,8 @@
                     <a href="/" class="pb-1 transition {% if request.endpoint == 'home' %} text-cyan-400 border-b-2 border-cyan-400 {% else %} text-slate-300 hover:text-cyan-400 {% endif %}">HOME</a>
                     <a href="/explore" class="pb-1 transition {% if request.endpoint == 'explore' %} text-cyan-400 border-b-2 border-cyan-400 {% else %} text-slate-300 hover:text-cyan-400 {% endif %}">EXPLORE</a>
                     <a href="/leaderboard" class="pb-1 transition {% if request.endpoint == 'leaderboard' %} text-cyan-400 border-b-2 border-cyan-400 {% else %} text-slate-300 hover:text-cyan-400 {% endif %}">LEADERBOARD</a>
+                    <!-- Find your existing navigation link and update it to this: -->
+                     <a href="{{ url_for('bugs') }}" class="...">Bugs</a>
                     
                     {% if current_user.is_authenticated %}
                         <a href="/logout" class="text-red-400 hover:text-red-300">LOGOUT</a>
