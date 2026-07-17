@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto mt-10">
+    <div class="text-center mb-10">
+        <h2 class="text-4xl font-bold text-fuchsia-400 mb-4">Step 3: Code Fix 🛠️</h2>
+        <p class="text-slate-300 text-lg">
+            Ghar Baithe Coding: Niche diye gaye hints ko follow karein aur error ko fix karein.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column: Mini Assistant -->
+        <div class="col-span-1 space-y-6">
+            <div class="glass-panel p-6 rounded-xl border-l-4 border-l-fuchsia-500 bg-slate-900/80 shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-4 -right-4 text-6xl opacity-10">🤖</div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    🤖 Mini Assistant
+                </h3>
+                
+                <div class="space-y-4">
+                    <!-- Hint 1 -->
+                    <div class="bg-slate-800 p-4 rounded-lg text-sm border border-slate-700 shadow-inner">
+                        <p class="text-cyan-400 font-bold mb-1">📍 File: <span class="text-slate-300 font-mono">calculator.py</span></p>
+                        <p class="text-slate-300"><strong>Hint 1:</strong> Line 45 par jao. Wahan 0 se divide karne par program crash ho raha hai.</p>
+                    </div>
+                    
+                    <!-- Hint 2 -->
+                    <div class="bg-slate-800 p-4 rounded-lg text-sm border border-slate-700 shadow-inner">
+                        <p class="text-slate-300"><strong>Hint 2:</strong> Yahan exception handling ka <code class="text-fuchsia-400 bg-slate-900 px-1 rounded">try-except</code> block use karke dekho taaki program safe rahe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Code Editor View -->
+        <div class="col-span-2 space-y-6">
+            
+            <!-- Before (Error Code) -->
+            <div class="glass-panel rounded-xl border border-red-500/30 bg-slate-900/90 overflow-hidden shadow-xl">
+                <div class="bg-slate-800/80 px-4 py-3 border-b border-red-500/20 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                    <span class="text-red-400 font-bold text-sm tracking-wider">BEFORE (Purana Code)</span>
+                </div>
+                <pre class="p-5 overflow-x-auto text-sm"><code class="text-slate-400 font-mono">def divide_numbers(a, b):
+    # Error: Agar b = 0 hua toh code yahan atak jayega
+    return a / b</code></pre>
+            </div>
+
+            <!-- After (Fixed Code) -->
+            <div class="glass-panel rounded-xl border border-cyan-500/50 bg-slate-900/90 overflow-hidden shadow-xl">
+                <div class="bg-slate-800/80 px-4 py-3 border-b border-cyan-500/20 flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
+                        <span class="text-cyan-400 font-bold text-sm tracking-wider">AFTER (Sahi Code)</span>
+                    </div>
+                    <button onclick="copyFixCode()" class="bg-cyan-500/20 hover:bg-cyan-500 hover:text-slate-900 border border-cyan-500/50 text-cyan-300 px-3 py-1 rounded text-xs font-bold transition flex items-center gap-2">
+                        📋 Copy Fix
+                    </button>
+                </div>
+                <pre class="p-5 overflow-x-auto text-sm"><code class="text-slate-300 font-mono">def divide_numbers(a, b):
+    <span class="text-cyan-300 font-bold">try:</span>
+        return a / b
+    <span class="text-cyan-300 font-bold">except ZeroDivisionError:</span>
+        <span class="text-cyan-300">print("Error: Zero se divide nahi kar sakte!")</span>
+        <span class="text-cyan-300">return None</span></code></pre>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="mt-12 flex justify-between items-center border-t border-white/10 pt-6">
+        <a href="/explore" class="text-slate-400 hover:text-fuchsia-400 transition font-bold">&larr; Back to Bugs</a>
+        <a href="/submit" class="bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-extrabold py-3 px-8 rounded-full transition shadow-[0_0_15px_rgba(192,38,211,0.4)]">
+            Step 4: Submit PR &rarr;
+        </a>
+    </div>
+</div>
+
+<script>
+    function copyFixCode() {
+        const codeToCopy = `def divide_numbers(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        print("Error: Zero se divide nahi kar sakte!")
+        return None`;
+        
+        navigator.clipboard.writeText(codeToCopy).then(() => {
+            const btn = document.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Copied!';
+            btn.classList.add('bg-green-500', 'text-slate-900', 'border-green-500');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-green-500', 'text-slate-900', 'border-green-500');
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}
